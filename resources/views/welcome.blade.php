@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WanWeb | Professional Web Services</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logowanweb.svg') }}">
-
-</head>
-<body class="antialiased bg-gray-50 dark:bg-gray-900">
-
-    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <div class="flex space-x-4">
-            <div class="shrink-0 flex items-center">
-                <a href="{{ route('wellcome') }}">
-                    <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                </a>
-            </div>
-            <div class="text-2xl font-black text-indigo-600 dark:text-indigo-400">WAN<span class="text-gray-900 dark:text-white">WEB</span></div>
-        </div>
-        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-             @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="font-bold text-gray-600 dark:text-gray-300 hover:text-indigo-600">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="text-gray-600 dark:text-gray-300 font-medium">Log in</a>
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-5 py-2 rounded-full font-bold hover:bg-indigo-700 transition">Get Started</a>
-                @endauth
-            @endif
-            <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
-                {{ __('About Us') }}
-            </x-nav-link>
-            <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
-                {{ __('Contact') }}
-            </x-nav-link>
-            <x-nav-link :href="route('terms')" :active="request()->routeIs('terms')">
-                {{ __('Terms of Service') }}
-            </x-nav-link>
-        </div>
-    </nav>
-
+<x-app-layout>
     <header class="relative py-32 px-6 text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="{{ asset('hero-bg.jpg') }}"
@@ -97,12 +55,4 @@
             </div>
         </div>
     </section>
-
-    <footer class="py-12 border-t dark:border-gray-800">
-        <div class="max-w-7xl mx-auto px-6 text-center text-gray-500 text-sm">
-            &copy; {{ date('Y') }} WANWEB Digital Agency. All rights reserved.
-        </div>
-    </footer>
-
-</body>
-</html>
+</x-app-layout>
